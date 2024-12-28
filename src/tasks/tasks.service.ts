@@ -30,14 +30,11 @@ export class TasksService {
       }
 
       const createdTask = new this.taskModel(createTaskDto);
-      return await createdTask.save();
-    } catch (error) {
-      if (error.code === 11000) {
-        throw new ConflictException(
-          `Task with title: ${createTaskDto.title} already exists`,
-        );
-      }
 
+      const savedTask = await createdTask.save();
+
+      return savedTask;
+    } catch (error) {
       throw new InternalServerErrorException('Error creating task');
     }
   }
