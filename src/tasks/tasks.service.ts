@@ -56,9 +56,13 @@ export class TasksService {
       const filter: any = {};
 
       if (search) {
+        const sanitizedSearch = search
+          .replace(/['"]/g, '')
+          .replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
         filter.$or = [
-          { title: { $regex: search, $options: 'i' } },
-          { description: { $regex: search, $options: 'i' } },
+          { title: { $regex: sanitizedSearch, $options: 'i' } },
+          { description: { $regex: sanitizedSearch, $options: 'i' } },
         ];
       }
 
@@ -69,13 +73,12 @@ export class TasksService {
       const total = await this.taskModel.countDocuments(filter);
       const totalPages = Math.ceil(total / limit);
 
-      // Si la página solicitada excede el total de páginas, devolver array vacío
       if (page > totalPages && total > 0) {
         return {
           data: [],
           pagination: {
             total,
-            page, // Mantenemos la página solicitada
+            page,
             totalPages,
             limit,
             hasNextPage: false,
