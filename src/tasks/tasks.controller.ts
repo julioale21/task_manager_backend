@@ -1,3 +1,4 @@
+import { FindAllTasksDto } from './dto/find-all-tasks-dto';
 import {
   Controller,
   Get,
@@ -6,6 +7,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -22,8 +24,8 @@ export class TasksController {
   }
 
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  findAll(@Query() findAllTasksDto: FindAllTasksDto) {
+    return this.tasksService.findAll(findAllTasksDto);
   }
 
   @Get(':id')

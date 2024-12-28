@@ -11,4 +11,9 @@ export class CreateTaskDto {
   @IsOptional()
   @IsString()
   description?: string;
+
+  @ApiPropertyOptional({ description: 'Task status' })
+  @IsOptional()
+  @IsString()
+  status?: boolean;
 }
