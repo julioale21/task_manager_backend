@@ -15,6 +15,7 @@ export class FindAllTasksDto {
     description: 'Page number',
     minimum: 1,
     default: 1,
+    type: Number,
   })
   @IsOptional()
   @Type(() => Number)
@@ -25,7 +26,9 @@ export class FindAllTasksDto {
   @ApiPropertyOptional({
     description: 'Number of items per page',
     minimum: 1,
+    maximum: 100,
     default: 10,
+    type: Number,
   })
   @IsOptional()
   @Type(() => Number)
@@ -35,13 +38,16 @@ export class FindAllTasksDto {
 
   @ApiPropertyOptional({
     description: 'Search term for title and description',
+    example: 'documentation',
+    type: String,
   })
   @IsOptional()
   @IsString()
   search?: string;
 
   @ApiPropertyOptional({
-    description: 'Filter by status (completed/pending)',
+    description: 'Filter by status',
+    type: Boolean,
   })
   @IsOptional()
   @Type(() => Boolean)
@@ -51,6 +57,8 @@ export class FindAllTasksDto {
   @ApiPropertyOptional({
     description: 'Field to sort by',
     default: 'createdAt',
+    example: 'createdAt',
+    type: String,
   })
   @IsOptional()
   @IsString()
@@ -60,6 +68,7 @@ export class FindAllTasksDto {
     description: 'Sort order',
     enum: ['asc', 'desc'],
     default: 'desc',
+    type: String,
   })
   @IsOptional()
   @IsEnum(['asc', 'desc'])
