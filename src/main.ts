@@ -7,10 +7,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Tu API')
-    .setDescription('Descripción de tu API')
+    .setTitle('Coally Task Manager API')
+    .setDescription(
+      'The Coally Task Manager API has the purpose of serve as a simple task manager for the Coally technical test.',
+    )
     .setVersion('1.0')
-    .addTag('tu-api')
+    .addTag('coally-task-manager')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
