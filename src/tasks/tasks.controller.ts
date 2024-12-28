@@ -12,10 +12,10 @@ import {
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { MongoIdPipe } from 'src/common/pipes/mongo-id.pipe';
 import { FindAllTasksDto } from './dto/find-all-tasks-dto';
 import { TaskResponse } from './responses/task.response';
 import { PaginatedTaskResponse } from './responses/paginated-task.response';
+import { MongoIdPipe } from '../common/pipes/mongo-id.pipe';
 
 @ApiTags('tasks')
 @Controller('tasks')
