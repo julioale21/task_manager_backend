@@ -1,73 +1,187 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Coally Task Manager API 🚀
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![NestJS](https://img.shields.io/badge/NestJS-v10.4.9-red)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen)
+![Swagger](https://img.shields.io/badge/Swagger-UI-blue)
+![Jest](https://img.shields.io/badge/Testing-Jest-yellow)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The **Coally Task Manager API** is a simple task manager developed as a technical test for Coally. It is built using [NestJS](https://nestjs.com/), a progressive Node.js framework, and [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) as the database.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🛠️ Tools and Technologies
 
-## Installation
+- **NestJS**: For creating a modular and scalable application.
+- **MongoDB Atlas**: As the database for managing tasks.
+- **Swagger**: For API documentation and testing.
+- **Jest**: For unit testing.
+- **TypeScript**: For type-safe development.
+- **Mongoose**: For MongoDB object modeling.
 
-```bash
-$ npm install
+---
+
+## 📂 Project Structure
+
+```plaintext
+src/
+├── app.module.ts         # Main application module
+├── app.controller.ts     # Base controller for health checks or root routes
+├── app.service.ts        # Base service for shared logic
+├── tasks/                # Feature module for task management
+│   ├── tasks.module.ts   # Task module definition
+│   ├── tasks.controller.ts # Task controller for routing
+│   ├── tasks.service.ts  # Task business logic
+│   ├── task.model.ts     # Task Mongoose schema/model
+│   ├── dto/              # Data Transfer Objects
+│   │   ├── create-task.dto.ts # DTO for creating tasks
+│   │   ├── update-task.dto.ts # DTO for updating tasks
+│   │   └── find-all-tasks.dto.ts # DTO for filtering and paginating tasks
+│   ├── pipes/            # Custom pipes for validation
+│   │   └── mongo-id.pipe.ts # Validation pipe for MongoDB Object IDs
+│   └── responses/        # API response structures
+│       ├── task.response.ts # Response for single task
+│       └── paginated-task.response.ts # Response for paginated tasks
+└── main.ts               # Application entry point
 ```
 
-## Running the app
+---
 
-```bash
-# development
-$ npm run start
+## 🏗️ Setting Up the Project
 
-# watch mode
-$ npm run start:dev
+### Prerequisites
 
-# production mode
-$ npm run start:prod
+- **Node.js**: Ensure you have Node.js version `16.x` or higher installed.
+- **MongoDB Atlas Account**: You'll need access to MongoDB Atlas with a connection string.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/julioale21/task_manager_backend.git
+   cd coally-task-manager
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory and add the following:
+   ```env
+   MONGODB_URI=mongodb+srv://julioale04031981:IllRhEXGE0QkImIL@cluster0.jmuny.mongodb.net/coally-db?retryWrites=true&w=majority
+   ```
+
+---
+
+## 🚀 Running the Application
+
+1. Start the server:
+
+   ```bash
+   npm run start:dev
+   ```
+
+2. Open the application in your browser:
+   - **Swagger UI**: [http://localhost:3000/api](http://localhost:3000/api)
+   - **API Root**: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧪 Running Tests
+
+1. Run unit tests:
+
+   ```bash
+   npm run test
+   ```
+
+2. Run tests with coverage:
+   ```bash
+   npm run test:cov
+   ```
+
+---
+
+## 🖥️ API Endpoints
+
+### Tasks
+
+- **POST /tasks**: Create a new task.
+- **GET /tasks**: Retrieve tasks with optional pagination and filters.
+- **GET /tasks/:id**: Retrieve a specific task by its ID.
+- **PATCH /tasks/:id**: Update a specific task.
+- **DELETE /tasks/:id**: Delete a task by its ID.
+
+---
+
+## 🌟 Why NestJS?
+
+1. **Scalability**: Built-in modular architecture allows separation of concerns.
+2. **TypeScript Support**: Ensures type safety and improved developer experience.
+3. **Community and Ecosystem**: Rich ecosystem of libraries and tools.
+4. **Built-in Features**: Includes powerful tools like dependency injection, middleware, and validation.
+5. **Swagger Integration**: Automatic generation of API documentation.
+
+---
+
+## 📖 Additional Notes
+
+- **Validation**: DTOs ensure strict validation of incoming requests using `class-validator` and `class-transformer`.
+- **Database**: The application uses MongoDB Atlas for cloud-based database management.
+- **Security**: CORS is enabled for development but should be configured appropriately for production.
+
+---
+
+## 📊 Database Schema (Tasks)
+
+| Field         | Type      | Description                          |
+| ------------- | --------- | ------------------------------------ |
+| `_id`         | `string`  | Unique identifier (MongoDB ObjectID) |
+| `title`       | `string`  | Title of the task                    |
+| `description` | `string`  | Description of the task (optional)   |
+| `status`      | `boolean` | Task completion status               |
+| `createdAt`   | `Date`    | Task creation date                   |
+
+---
+
+## 📈 Project Diagram
+
+```plaintext
++-------------------------------------------+
+|                NestJS App                 |
++-----------------------+-------------------+
+| Modules: Tasks Module | Database: MongoDB |
++-----------------------+-------------------+
+|      Controller       |  Service Layer    |
+|    - tasks.controller | - tasks.service   |
++-----------------------+-------------------+
+|          DTOs         |      Pipes        |
+| - create-task.dto     | - mongo-id.pipe   |
+| - update-task.dto     |                   |
++-----------------------+-------------------+
 ```
 
-## Test
+---
 
-```bash
-# unit tests
-$ npm run test
+## ✨ Contributing
 
-# e2e tests
-$ npm run test:e2e
+Feel free to fork this repository and submit pull requests. Any contributions to improve this project are welcome!
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Support
+## Solved by Julio Romero ✨
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+I am a **full-stack web and mobile Flutter developer** with over 6 years of experience. Currently, I work for **Moonshot Partners**, building a mobile application for **Digitel Venezuela** using Flutter.
 
-## Stay in touch
+### Connect with Me:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- **[LinkedIn](https://www.linkedin.com/in/julio-alejandro-romero-bb4197119/)**
+- **[GitHub](https://github.com/julioale21)**
 
-## License
+---
 
-Nest is [MIT licensed](LICENSE).
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
