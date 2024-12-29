@@ -16,8 +16,9 @@ import { FindAllTasksDto } from './dto/find-all-tasks-dto';
 import { TaskResponse } from './responses/task.response';
 import { PaginatedTaskResponse } from './responses/paginated-task.response';
 import { MongoIdPipe } from '../common/pipes/mongo-id.pipe';
+import { Auth } from 'src/auth/decorators';
 
-@ApiTags('tasks')
+@ApiTags('Tasks')
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
@@ -51,6 +52,7 @@ export class TasksController {
       },
     },
   })
+  @Auth()
   create(@Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create(createTaskDto);
   }
@@ -109,6 +111,7 @@ export class TasksController {
       },
     },
   })
+  @Auth()
   findAll(@Query() findAllTasksDto: FindAllTasksDto) {
     return this.tasksService.findAll(findAllTasksDto);
   }
@@ -131,6 +134,7 @@ export class TasksController {
       },
     },
   })
+  @Auth()
   findOne(@Param('id', MongoIdPipe) id: string) {
     return this.tasksService.findOne(id);
   }
@@ -154,6 +158,7 @@ export class TasksController {
     status: 500,
     description: 'Internal server error',
   })
+  @Auth()
   update(
     @Param('id', MongoIdPipe) id: string,
     @Body() updateTaskDto: UpdateTaskDto,
@@ -181,6 +186,7 @@ export class TasksController {
       },
     },
   })
+  @Auth()
   remove(@Param('id', MongoIdPipe) id: string) {
     return this.tasksService.remove(id);
   }

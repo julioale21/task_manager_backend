@@ -1,0 +1,9 @@
+import { ValidRoles } from './valid_roles';
+
+export interface User {
+  id?: string;
+  name: string;
+  email?: string;
+  password?: string;
+  roles?: ValidRoles[];
+}

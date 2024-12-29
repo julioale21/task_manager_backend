@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ConfigModule } from '@nestjs/config';
       serverSelectionTimeoutMS: 5000,
       connectTimeoutMS: 10000,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
