@@ -54,7 +54,7 @@ export class AuthService {
 
     return {
       ...plainUser,
-      access_token: this.getJwtToken({ id: user.id }),
+      token: this.getJwtToken({ id: user.id }),
     };
   }
 

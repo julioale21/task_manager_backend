@@ -25,8 +25,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     const user = await this.userModel.findById(id);
 
-    console.log('from validate', user);
-
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
