@@ -22,8 +22,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Fiction Exress RESTFul API')
-    .setDescription('Fiction Express API endpoints description')
+    .setTitle('Coally RESTFul API')
+    .setDescription('Coally API endpoints description')
     .setVersion('1.0')
     .build();
 
