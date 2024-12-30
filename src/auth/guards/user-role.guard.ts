@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
-import { META_ROLES } from 'src/auth/decorators/role_protected.decorator';
+import { META_ROLES } from '../../auth/decorators/role_protected.decorator';
 import { User } from '../user.model';
 import { ValidRoles } from '../interfaces/valid_roles';
 

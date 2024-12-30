@@ -16,7 +16,7 @@ import { FindAllTasksDto } from './dto/find-all-tasks-dto';
 import { TaskResponse } from './responses/task.response';
 import { PaginatedTaskResponse } from './responses/paginated-task.response';
 import { MongoIdPipe } from '../common/pipes/mongo-id.pipe';
-import { Auth } from 'src/auth/decorators';
+import { Auth } from '../auth/decorators/auth.decorator';
 
 @ApiTags('Tasks')
 @Controller('tasks')
