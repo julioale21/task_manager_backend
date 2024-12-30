@@ -106,8 +106,8 @@ src/
    ```
 
 2. Open the application in your browser:
-   - **Swagger UI**: [http://localhost:3002/api](http://localhost:3002/api)
-   - **API Root**: [http://localhost:3002](http://localhost:3002)
+   - **Swagger UI**: [http://localhost:3002/api/v1](http://localhost:3002/api/v1)
+   - **API Root**: [http://localhost:3002/api/v1](http://localhost:3002/api/v1)
 
 ---
 
