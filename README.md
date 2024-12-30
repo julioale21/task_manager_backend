@@ -1,4 +1,6 @@
-# Coally Task Manager API 🚀
+![Coally Logo](https://coally.com/wp-content/uploads/2023/09/Horizontal-Version-Principal-1.png)
+
+# Coally - Task Manager API 🚀
 
 ![NestJS](https://img.shields.io/badge/NestJS-v10.4.9-red)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen)
@@ -9,7 +11,7 @@ The **Coally Task Manager API** is a simple task manager developed as a technica
 
 ---
 
-## 🛠️ Tools and Technologies
+## 🔧 Tools and Technologies
 
 - **NestJS**: For creating a modular and scalable application.
 - **MongoDB Atlas**: As the database for managing tasks.
@@ -17,6 +19,19 @@ The **Coally Task Manager API** is a simple task manager developed as a technica
 - **Jest**: For unit testing.
 - **TypeScript**: For type-safe development.
 - **Mongoose**: For MongoDB object modeling.
+- **Passport Module**: Used for managing authentication tokens.
+
+---
+
+## 🔢 Key Features
+
+- **Authentication and Authorization**:
+  - Handled using NestJS Passport.
+  - Custom decorators for protecting routes with authentication tokens.
+- **Task Querying**:
+  - Supports pagination, filtering by status, and search parameters for task retrieval.
+- **API Documentation**:
+  - Interactive Swagger UI for easy testing and exploration.
 
 ---
 
@@ -24,29 +39,36 @@ The **Coally Task Manager API** is a simple task manager developed as a technica
 
 ```plaintext
 src/
-├── app.module.ts         # Main application module
-├── app.controller.ts     # Base controller for health checks or root routes
-├── app.service.ts        # Base service for shared logic
-├── tasks/                # Feature module for task management
-│   ├── tasks.module.ts   # Task module definition
-│   ├── tasks.controller.ts # Task controller for routing
-│   ├── tasks.service.ts  # Task business logic
-│   ├── task.model.ts     # Task Mongoose schema/model
-│   ├── dto/              # Data Transfer Objects
-│   │   ├── create-task.dto.ts # DTO for creating tasks
-│   │   ├── update-task.dto.ts # DTO for updating tasks
-│   │   └── find-all-tasks.dto.ts # DTO for filtering and paginating tasks
-│   ├── pipes/            # Custom pipes for validation
-│   │   └── mongo-id.pipe.ts # Validation pipe for MongoDB Object IDs
-│   └── responses/        # API response structures
-│       ├── task.response.ts # Response for single task
-│       └── paginated-task.response.ts # Response for paginated tasks
-└── main.ts               # Application entry point
+├── auth/                # Authentication module
+│   ├── strategies/      # JWT strategies
+│   │   └── jwt.strategy.ts
+│   ├── auth.controller.ts
+│   ├── auth.module.ts
+│   └── auth.service.ts
+│   └── user.model.ts    # User schema/model
+├── common/pipes/        # Custom validation pipes
+│   ├── mongo-id.pipe.spec.ts
+│   └── mongo-id.pipe.ts
+├── interceptors/        # Global or module-specific interceptors
+├── tasks/               # Task management module
+│   ├── dto/             # Data Transfer Objects
+│   ├── responses/       # API response structures
+│   │   ├── task.response.ts
+│   │   └── paginated-task.response.ts
+│   ├── tasks.controller.ts
+│   ├── tasks.controller.spec.ts
+│   ├── tasks.module.ts
+│   ├── tasks.service.spec.ts
+│   └── tasks.service.ts
+├── app.controller.ts    # Root application controller
+├── app.module.ts        # Root application module
+├── app.service.ts       # Root application service
+└── main.ts              # Application entry point
 ```
 
 ---
 
-## 🏗️ Setting Up the Project
+## 🔧 Setting Up the Project
 
 ### Prerequisites
 
@@ -84,12 +106,33 @@ src/
    ```
 
 2. Open the application in your browser:
-   - **Swagger UI**: [http://localhost:3000/api](http://localhost:3000/api)
-   - **API Root**: [http://localhost:3000](http://localhost:3000)
+   - **Swagger UI**: [http://localhost:3002/api](http://localhost:3002/api)
+   - **API Root**: [http://localhost:3002](http://localhost:3002)
 
 ---
 
-## 🧪 Running Tests
+## 💡 Additional Features
+
+### API Endpoints
+
+#### Tasks
+
+- **POST /tasks**: Create a new task.
+- **GET /tasks**: Retrieve tasks with optional pagination and filters.
+- **GET /tasks/:id**: Retrieve a specific task by its ID.
+- **PATCH /tasks/:id**: Update a specific task.
+- **DELETE /tasks/:id**: Delete a task by its ID.
+
+### Custom Features
+
+- **Protected Routes**:
+  - Leveraging custom decorators for token validation.
+- **Advanced Querying**:
+  - Pagination, status-based filtering, and parameterized searching.
+
+---
+
+## 🔧 Testing
 
 1. Run unit tests:
 
@@ -98,43 +141,14 @@ src/
    ```
 
 2. Run tests with coverage:
+
    ```bash
    npm run test:cov
    ```
 
 ---
 
-## 🖥️ API Endpoints
-
-### Tasks
-
-- **POST /tasks**: Create a new task.
-- **GET /tasks**: Retrieve tasks with optional pagination and filters.
-- **GET /tasks/:id**: Retrieve a specific task by its ID.
-- **PATCH /tasks/:id**: Update a specific task.
-- **DELETE /tasks/:id**: Delete a task by its ID.
-
----
-
-## 🌟 Why NestJS?
-
-1. **Scalability**: Built-in modular architecture allows separation of concerns.
-2. **TypeScript Support**: Ensures type safety and improved developer experience.
-3. **Community and Ecosystem**: Rich ecosystem of libraries and tools.
-4. **Built-in Features**: Includes powerful tools like dependency injection, middleware, and validation.
-5. **Swagger Integration**: Automatic generation of API documentation.
-
----
-
-## 📖 Additional Notes
-
-- **Validation**: DTOs ensure strict validation of incoming requests using `class-validator` and `class-transformer`.
-- **Database**: The application uses MongoDB Atlas for cloud-based database management.
-- **Security**: CORS is enabled for development but should be configured appropriately for production.
-
----
-
-## 📊 Database Schema (Tasks)
+## 🌐 Database Schema (Tasks)
 
 | Field         | Type      | Description                          |
 | ------------- | --------- | ------------------------------------ |
@@ -146,7 +160,7 @@ src/
 
 ---
 
-## 📈 Project Diagram
+## 📊 Project Diagram
 
 ```plaintext
 +-------------------------------------------+
@@ -182,6 +196,7 @@ I am a **full-stack web and mobile Flutter developer** with over 6 years of expe
 
 ---
 
-## 📜 License
+## 🔔 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
