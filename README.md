@@ -115,6 +115,8 @@ src/
 
 ### API Endpoints
 
+API prefix: /api/v1
+
 #### Tasks
 
 - **POST /tasks**: Create a new task.
